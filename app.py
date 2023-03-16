@@ -3,11 +3,11 @@ import streamlit as st
 import cv2
 from PIL import Image
 from utils import MaskMaker, PolkaDotMaker
+from streamlit_extras.buy_me_a_coffee import button
 
 model_path = './tflitemodels/mobilenet-float-multiplier-050-stride16-float16.tflite'
 maker = MaskMaker(model_path)
 
-from PIL import Image
 
 def resize_image(image: Image.Image, max_size):
     """
@@ -45,7 +45,15 @@ with st.sidebar:
     color_G = st.slider('G', 0, 255, 226)
     color_B = st.slider('B', 0, 255, 232)
 
-st.title('水玉コラ生成クソアプリ')
+st.title('水玉コラ自動生成ツール')
+st.subheader('絵に対してはできないのであしからず。')
+
+text, coffee = st.columns(2)
+with text:
+    st.text('パラメータで色々調整できます')
+    st.text('乱数ガチャで最高にえっちな画像を作ろう')
+with coffee:
+    button(username="apiss", floating=False, width=221)
 
 uploaded_image = st.file_uploader(
     "画像を以下からアップロードしてください",
