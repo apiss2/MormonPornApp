@@ -34,6 +34,8 @@ def resize_image(image: Image.Image, max_size):
 
     return resized_image
 
+st.set_page_config(page_title="水玉コラ自動生成ツール")
+
 with st.sidebar:
     st.header('各種パラメータ')
     th = st.slider('身体範囲推定のしきい値', 0.3, 0.95, 0.75)
